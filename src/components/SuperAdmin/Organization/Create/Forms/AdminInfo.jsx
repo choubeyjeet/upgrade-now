@@ -34,8 +34,9 @@ export default function AdminInfo({ initialData }) {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <div className="w-full mx-auto p-6 bg-white border border-gray-300 dark:bg-gray-800 rounded-lg shadow-md">
+      <p className="text-[20px] font-bold text-black">Admin Info</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
         {/* Primary Contact Person Name */}
         <div className="relative w-full mb-5">
           <input
@@ -48,11 +49,10 @@ export default function AdminInfo({ initialData }) {
           />
           <label
             htmlFor="contact_name"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("contact_name") || focusedFields["contact_name"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("contact_name") || focusedFields["contact_name"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Primary Contact Person Name
           </label>
@@ -79,11 +79,10 @@ export default function AdminInfo({ initialData }) {
           />
           <label
             htmlFor="contact_email"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("contact_email") || focusedFields["contact_email"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("contact_email") || focusedFields["contact_email"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Primary Contact Email
           </label>
@@ -109,11 +108,10 @@ export default function AdminInfo({ initialData }) {
           />
           <label
             htmlFor="contact_phone"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("contact_phone") || focusedFields["contact_phone"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("contact_phone") || focusedFields["contact_phone"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Primary Contact Phone (Optional)
           </label>

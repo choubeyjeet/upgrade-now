@@ -33,8 +33,9 @@ export default function ContactInfo({ initialData }) {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <div className="w-full mx-auto p-6 bg-white dark:bg-gray-800 border border-gray-300 rounded-lg shadow-md">
+      <p className="text-[20px] font-bold text-black">Contact Info</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
         {/* Email Input */}
 
         <div className="relative w-full mb-5">
@@ -55,11 +56,10 @@ export default function ContactInfo({ initialData }) {
           />
           <label
             htmlFor="email"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("email") || focusedFields["email"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("email") || focusedFields["email"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Email
           </label>
@@ -86,11 +86,10 @@ export default function ContactInfo({ initialData }) {
           />
           <label
             htmlFor="phone"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("phone") || focusedFields["phone"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("phone") || focusedFields["phone"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Phone Number (Optional)
           </label>
@@ -117,11 +116,10 @@ export default function ContactInfo({ initialData }) {
           />
           <label
             htmlFor="website"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("website") || focusedFields["website"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("website") || focusedFields["website"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Website (Optional)
           </label>

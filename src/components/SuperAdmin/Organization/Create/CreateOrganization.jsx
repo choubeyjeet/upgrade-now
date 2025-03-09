@@ -4,13 +4,35 @@ import ContactInfo from "./Forms/ContactInfo";
 import Address from "./Forms/Address";
 import AdminInfo from "./Forms/AdminInfo";
 import Settings from "./Forms/Settings";
+import { FiPackage, FiUser, FiMapPin, FiShield, FiSettings } from "react-icons/fi";
+
 
 const tabs = [
-  "Basic Info",
-  "Contact Info",
-  "Address",
-  "Admin Info",
-  "Settings",
+  {
+    label: "Basic Info",
+    description: "Provide general details about the entity or product.",
+    icon: <FiPackage size={22} />
+  },
+  {
+    label: "Contact Info",
+    description: "Add primary contact details including email and phone number.",
+    icon: <FiUser size={22} />
+  },
+  {
+    label: "Address Information",
+    description: "Specify the location details including city and postal code.",
+    icon: <FiMapPin size={22} />
+  },
+  {
+    label: "Admin Info",
+    description: "Manage administrative roles, permissions, and responsibilities.",
+    icon: <FiShield size={22} />
+  },
+  {
+    label: "Settings",
+    description: "Customize preferences and configure system settings.",
+    icon: <FiSettings size={22} />
+  }
 ];
 
 const CreateOrganization = () => {
@@ -34,20 +56,25 @@ const CreateOrganization = () => {
   };
 
   return (
-    <div className="w-[100%] mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <div className="flex border-b">
+    <div className="w-[100%] mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md  flex gap-4">
+      <div className="w-[55%] p-6 rounded-lg border border-gray-300 bg-white">
         {tabs.map((tab, index) => (
-          <button
+          <div
             key={index}
-            className={`px-4 py-2 text-sm font-medium border-b-2 transition-all duration-300 ${
-              selectedIndex === index
-                ? "border-blue-500 text-blue-500"
-                : "border-transparent text-gray-500 dark:text-gray-300"
-            }`}
+            className={`flex items-start gap-3 p-4 rounded-md transition-all cursor-pointer ${selectedIndex === index ? "bg-gray-100" : "hover:bg-gray-50"
+              }`}
             onClick={() => setSelectedIndex(index)}
           >
-            {tab}
-          </button>
+            <div className={`w-[45px] h-[40px] flex items-center justify-center rounded-full ${selectedIndex === index ? "bg-blue-500 text-white" : "bg-gray-200 text-gray-600"}`}>
+              {tab.icon}
+            </div>
+            <div>
+              <h3 className={`text-sm font-semibold ${selectedIndex === index ? "text-blue-600" : "text-gray-800"}`}>
+                {tab.label}
+              </h3>
+              <p className="text-xs text-gray-500">{tab.description}</p>
+            </div>
+          </div>
         ))}
       </div>
       {formView()}

@@ -35,8 +35,9 @@ export default function Address({ initialData }) {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <div className="w-full mx-auto p-6 bg-white  dark:bg-gray-800 rounded-lg shadow-md border border-gray-300">
+      <p className="text-[20px] font-bold text-black">Address Info</p>
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
         {/* Country Dropdown */}
         <div className="relative w-full mb-5">
           <select
@@ -222,11 +223,10 @@ export default function Address({ initialData }) {
           />
           <label
             htmlFor="state"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("state") || focusedFields["state"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("state") || focusedFields["state"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             State/Province (Optional)
           </label>
@@ -244,11 +244,10 @@ export default function Address({ initialData }) {
           />
           <label
             htmlFor="city"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("city") || focusedFields["city"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("city") || focusedFields["city"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             City (Optional)
           </label>
@@ -266,11 +265,10 @@ export default function Address({ initialData }) {
           />
           <label
             htmlFor="postalCode"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("postalCode") || focusedFields["postalCode"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("postalCode") || focusedFields["postalCode"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Postal Code/ZIP Code (Optional)
           </label>
@@ -287,11 +285,10 @@ export default function Address({ initialData }) {
           ></textarea>
           <label
             htmlFor="streetAddress"
-            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${
-              watch("streetAddress") || focusedFields["streetAddress"]
-                ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
-                : "text-[14px]"
-            }`}
+            className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181] transition-all duration-200 ${watch("streetAddress") || focusedFields["streetAddress"]
+              ? "text-[10px] -translate-y-5 text-[#131313] pl-1 pr-1"
+              : "text-[14px]"
+              }`}
           >
             Street Address (Optional)
           </label>
