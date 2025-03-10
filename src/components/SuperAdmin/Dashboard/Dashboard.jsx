@@ -2,24 +2,28 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GoOrganization } from "react-icons/go";
 import { IoMdAddCircle } from "react-icons/io";
-import service from "../../../assets/service.png"
+import service from "../../../assets/service.png";
 import { IoSearch } from "react-icons/io5";
-import {
-  FiBarChart2,
-  FiInbox,
-  FiSettings,
-} from "react-icons/fi";
+import { FiBarChart2, FiInbox, FiSettings } from "react-icons/fi";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
-import { RxUpdate } from "react-icons/rx";
+import { MdManageAccounts } from "react-icons/md";
 
 
 function Dashboard() {
   const [sideBar, setSideBar] = useState(false);
+  const [openMenus, setOpenMenus] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
 
   const activePath = location.pathname.split("/")[2];
   const activeSubPath = location.pathname.split("/")[3];
+
+  const toggleMenu = (menu) => {
+    setOpenMenus((prev) => ({
+      ...prev,
+      [menu]: !prev[menu], // Toggle the clicked menu
+    }));
+  };
 
   const menuItems = [
     {
@@ -28,7 +32,7 @@ function Dashboard() {
       icon: <GoOrganization size={20} />,
       children: [
         { name: "Create", path: "create", icon: <IoMdAddCircle size={18} /> },
-        { name: "Update", path: "update", icon: <RxUpdate size={18} /> },
+        { name: "Manage", path: "manage", icon: <MdManageAccounts size={18} /> },
       ],
     },
     {
@@ -46,11 +50,7 @@ function Dashboard() {
       path: "settings",
       icon: <FiSettings size={20} />,
     },
-    {
-      name: "Manage Brand",
-      path: "manage_brand",
-      icon: <img alt="service" src={service} width={20} height={20} />,
-    },
+
   ];
 
   return (
@@ -80,17 +80,21 @@ function Dashboard() {
         <ul className="mt-7 cursor-pointer">
           {menuItems.map((item, index) => {
             const isActive = activePath === item.path;
+            const isOpen = openMenus[item.path];
+
             return (
               <li key={index}>
                 {/* Parent Item */}
                 <div
                   className={`flex items-center justify-between rounded-md h-[40px] px-4 transition-all duration-300 cursor-pointer ${isActive ? "text-blue-500 bg-gray-100" : "text-gray-600"
                     } hover:bg-gray-200 hover:text-black font-semibold`}
-                  onClick={() =>
-                    item.children
-                      ? navigate(`/dashboard/${item.path}/${item.children[0].path}`)
-                      : navigate(`/dashboard/${item.path}`)
-                  }
+                  onClick={() => {
+                    if (item.children) {
+                      toggleMenu(item.path);
+                    } else {
+                      navigate(`/dashboard/${item.path}`);
+                    }
+                  }}
                 >
                   <div className="flex items-center gap-2">
                     {item.icon}
@@ -98,44 +102,42 @@ function Dashboard() {
                   </div>
                   {!sideBar && item.children && (
                     <IoIosArrowDown
-                      className={`transform transition-transform ${isActive ? "rotate-180" : "rotate-0"
+                      className={`transform transition-transform ${isOpen ? "rotate-180" : "rotate-0"
                         }`}
                     />
                   )}
                 </div>
 
-                {/* Sub-items */}
-                {item.children && (
-                  <ul
-                    className={`overflow-hidden transition-all ${isActive ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
-                      }`}
-                  >
-                    {item.children.map((sub, subIndex) => (
-                      <li key={subIndex}>
-                        <div
-                          onClick={() =>
-                            navigate(`/dashboard/${item.path}/${sub.path}`)
-                          }
-                          className={`flex items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path
-                            ? "text-blue-500"
-                            : "text-gray-500"
-                            } hover:text-black hover:bg-gray-200 font-medium`}
-                        >
-                          {/* Dot Indicator for Active Sub-item */}
-                          {activeSubPath === sub.path && !sideBar && (
-                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                          )}
+                {/* Sub-items with smooth transition */}
+                <ul
+                  className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                    }`}
+                >
+                  {item.children?.map((sub, subIndex) => (
+                    <li key={subIndex}>
+                      <div
+                        onClick={() =>
+                          navigate(`/dashboard/${item.path}/${sub.path}`)
+                        }
+                        className={`flex ${sideBar && "justify-end"} items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path
+                          ? "text-blue-500"
+                          : "text-gray-500"
+                          } hover:text-black hover:bg-gray-200 font-medium`}
+                      >
+                        {/* Dot Indicator for Active Sub-item */}
+                        {activeSubPath === sub.path && !sideBar && (
+                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                        )}
 
-                          {/* Icon is always visible */}
-                          <span>{sub.icon}</span>
+                        {/* Icon is always visible */}
+                        <span>{sub.icon}</span>
 
-                          {/* Show text only if sidebar is expanded */}
-                          {!sideBar && <span>{sub.name}</span>}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                        {/* Show text only if sidebar is expanded */}
+                        {!sideBar && <span>{sub.name}</span>}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               </li>
             );
           })}

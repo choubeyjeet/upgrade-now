@@ -4,6 +4,7 @@ import ContactInfo from "./Forms/ContactInfo";
 import Address from "./Forms/Address";
 import AdminInfo from "./Forms/AdminInfo";
 import Settings from "./Forms/Settings";
+import service from "../../../../assets/service.png"
 import { FiPackage, FiUser, FiMapPin, FiShield, FiSettings } from "react-icons/fi";
 
 
@@ -32,6 +33,12 @@ const tabs = [
     label: "Settings",
     description: "Customize preferences and configure system settings.",
     icon: <FiSettings size={22} />
+  },
+
+  {
+    label: "Manage Brand",
+    description: "Give Your own Logo",
+    icon: <img alt="service" src={service} width={22} height={22} />
   }
 ];
 
