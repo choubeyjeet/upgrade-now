@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GoOrganization } from "react-icons/go";
 import { IoMdAddCircle } from "react-icons/io";
-import service from "../../../assets/service.png";
 import { IoSearch } from "react-icons/io5";
 import { FiBarChart2, FiInbox, FiSettings } from "react-icons/fi";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
@@ -95,6 +94,8 @@ function Dashboard() {
                       navigate(`/dashboard/${item.path}`);
                     }
                   }}
+                  data-tooltip-id="tooltip"
+                  data-tooltip-content={item.name}
                 >
                   <div className="flex items-center gap-2">
                     {item.icon}
@@ -119,6 +120,8 @@ function Dashboard() {
                         onClick={() =>
                           navigate(`/dashboard/${item.path}/${sub.path}`)
                         }
+                        data-tooltip-id="tooltip"
+                        data-tooltip-content={sub.name}
                         className={`flex ${sideBar && "justify-end"} items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path
                           ? "text-blue-500"
                           : "text-gray-500"
