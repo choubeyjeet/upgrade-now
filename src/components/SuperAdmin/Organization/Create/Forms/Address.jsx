@@ -35,7 +35,7 @@ export default function Address({ initialData }) {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white  dark:bg-gray-800 rounded-lg shadow-md border border-gray-300">
+    <div className="w-full mx-auto p-6 bg-white   rounded-lg shadow-md border border-gray-300">
       <p className="text-[20px] font-bold text-black">Address Info</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
         {/* Country Dropdown */}

@@ -25,7 +25,7 @@ export default function BasicInfo() {
   };
 
   return (
-    <div className="w-[100%] mx-auto p-6  bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-300">
+    <div className="w-[100%] mx-auto p-6  bg-white  rounded-lg shadow-md border border-gray-300">
       <p className="text-[20px] font-bold text-black">Basic Info</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
         {/* Organization Name Input */}
@@ -59,7 +59,7 @@ export default function BasicInfo() {
         {/* Description Textarea */}
         <div className="relative">
           <textarea
-            className="w-full p-2 border rounded-md dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:outline-none"
+            className="w-full p-2 border rounded-md  dark:text-white focus:outline-none"
             {...register("description", {
               required: "Description is required",
             })}

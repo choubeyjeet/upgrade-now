@@ -44,7 +44,7 @@ export default function Settings({ initialData, existingUsers }) {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white border border-gray-300 dark:bg-gray-800 rounded-lg shadow-md">
+    <div className="w-full mx-auto p-6 bg-white border border-gray-300  rounded-lg shadow-md">
       <p className="text-[20px] font-bold text-black">Settings</p>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-4">
         {/* Status */}

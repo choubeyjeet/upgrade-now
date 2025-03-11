@@ -224,10 +224,10 @@ function Dashboard() {
 
       {/* Main Content */}
       <div className="w-full flex flex-col">
-        <div className="w-full h-[65px] border flex justify-start items-center px-4 gap-3">
+        <div className="w-full h-[65px] border flex justify-between items-center px-4 gap-3 relative">
           {/* Sidebar Toggle Button */}
           <button
-            className={`lg:hidden fixed top-4 right-4 z-50 text-black text-3xl transition-all duration-300 ease-in-out transform ${mobileMenu ? "rotate-180" : "rotate-0"}`}
+            className={`lg:hidden absolute right-4 z-50 text-black text-3xl transition-all duration-300 ease-in-out transform ${mobileMenu ? "rotate-180" : "rotate-0"}`}
             onClick={() => setMobileMenu(!mobileMenu)}
           >
             {mobileMenu ? (
@@ -237,37 +237,25 @@ function Dashboard() {
             )}
           </button>
 
+          {/* Sidebar Toggle for Large Screens */}
           <div className="lg:block hidden">
             <div
               className="w-[40px] h-[40px] rounded-full hover:bg-gray-300 cursor-pointer flex justify-center items-center transition-all duration-300 ease-in-out"
               onClick={() => setSideBar(!sideBar)}
             >
               {sideBar ? (
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  height="1.5em"
-                  width="1.5em"
-                >
+                <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" height="1.5em" width="1.5em">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
               ) : (
-                <svg
-                  stroke="currentColor"
-                  fill="none"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                  height="1.5em"
-                  width="1.5em"
-                >
+                <svg stroke="currentColor" fill="none" strokeWidth="2" viewBox="0 0 24 24" height="1.5em" width="1.5em">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h7"></path>
                 </svg>
               )}
             </div>
           </div>
         </div>
+
         <Outlet />
       </div>
 
