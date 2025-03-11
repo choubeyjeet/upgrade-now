@@ -4,5 +4,8 @@
       "source": "/(.*)",
       "destination": "/"
     }
-  ]
+  ],
+  "build": {
+    "command": "npm install --force && npm run build"
+  }
 }
