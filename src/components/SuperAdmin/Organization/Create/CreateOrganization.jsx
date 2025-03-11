@@ -4,8 +4,10 @@ import ContactInfo from "./Forms/ContactInfo";
 import Address from "./Forms/Address";
 import AdminInfo from "./Forms/AdminInfo";
 import Settings from "./Forms/Settings";
+import { FiStar } from "react-icons/fi";
 import service from "../../../../assets/service.svg";
 import { FiPackage, FiUser, FiMapPin, FiShield, FiSettings } from "react-icons/fi";
+import ManageBrand from "./Forms/ManageBrand";
 
 const tabs = [
   {
@@ -36,7 +38,7 @@ const tabs = [
   {
     label: "Manage Brand",
     description: "Give Your own Logo",
-    icon: <img alt="service" src={service} width={22} height={22} />,
+    icon: <FiStar size={22} />,
   },
 ];
 
@@ -56,16 +58,16 @@ const CreateOrganization = () => {
       case 4:
         return <Settings />;
       default:
-        return <BasicInfo />;
+        return <ManageBrand />;
     }
   };
 
   return (
     <div className="bg-[#F5F5F5] min-h-screen p-4">
-      <div className="w-full mx-auto p-4 md:p-6 rounded-lg shadow-md flex flex-col lg:flex-row gap-6 justify-center items-center">
+      <div className="w-full mx-auto p-4 md:p-6 rounded-lg shadow-md flex flex-col lg:flex-row gap-6 justify-start items-start ">
 
         {/* Sidebar (Icons Flex on Small Screens) */}
-        <div className="lg:w-1/3 w-full flex flex-wrap lg:flex-col p-4 rounded-lg border border-gray-300 bg-white">
+        <div className="lg:w-1/3 w-full h-full  flex flex-wrap lg:flex-col p-4 rounded-lg border border-gray-300 bg-white">
           {tabs.map((tab, index) => (
             <div
               key={index}
@@ -91,7 +93,7 @@ const CreateOrganization = () => {
         </div>
 
         {/* Form Section */}
-        <div className="lg:w-2/3 w-full bg-white p-4 md:p-6 rounded-lg shadow-md">
+        <div className="lg:w-2/3 w-full h-full  border  bg-white p-4 md:p-6 rounded-lg shadow-md">
           {formView()}
         </div>
 
