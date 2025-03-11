@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function TutorDashboard() {
-  return <div>Tutor Dashboard</div>;
+  return <div>welcome to Tutor Dashboard</div>;
 }
