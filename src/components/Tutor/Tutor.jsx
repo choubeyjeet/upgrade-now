@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { GoOrganization } from "react-icons/go";
 import { IoSearch } from "react-icons/io5";
-import { MdOutlineEventAvailable } from "react-icons/md";
 import {
   FiBarChart2,
   FiEdit,
@@ -14,10 +13,15 @@ import {
 
 import { Outlet, useNavigate } from "react-router-dom";
 import { BsGooglePlay } from "react-icons/bs";
+import { GiTeacher } from "react-icons/gi";
+import { PiStudentBold } from "react-icons/pi";
 
-function Student() {
+function Tutor() {
   const [dropDown, setDropDown] = useState(false);
+  const [dropDown2, setDropDown2] = useState(false);
+  const [dropDown3, setDropDown3] = useState(false);
   const [sideBar, setSideBar] = useState(false);
+
   const navigate = useNavigate();
   return (
     <>
@@ -25,8 +29,9 @@ function Student() {
       <div className="w-full flex">
         {/* Sidebar */}
         <div
-          className={`h-screen border overflow-y-scroll scrollbar-hide transition-all duration-300 ${sideBar ? "w-[80px]" : "w-[240px]"
-            }`}
+          className={`h-screen border overflow-y-scroll scrollbar-hide transition-all duration-300 ${
+            sideBar ? "w-[80px]" : "w-[240px]"
+          }`}
         >
           {/* Logo */}
           <div
@@ -48,22 +53,23 @@ function Student() {
 
           {/* Sidebar Items */}
           <p
-            className={`text-[#767477] font-medium text-[19px] px-6 mt-2 ${sideBar ? "hidden" : "block"
-              }`}
+            className={`text-[#767477] font-medium text-[19px] px-6 mt-2 ${
+              sideBar ? "hidden" : "block"
+            }`}
           >
             Dashboard
           </p>
 
           <ul className="mt-7 cursor-pointer">
             {/* Organization Dropdown */}
-            {/* <li data-tooltip-id="tooltip" data-tooltip-content="Organization">
+            <li data-tooltip-id="tooltip" data-tooltip-content="Student">
               <div
                 className="text-gray-500 cursor-pointer font-medium text-[15px] rounded-md h-[35px] px-4 flex justify-between items-center transition-all duration-300 hover:text-black hover:bg-gray-300"
                 onClick={() => setDropDown(!dropDown)}
               >
                 <div className="flex items-center gap-2">
-                  <GoOrganization size={18} />
-                  {!sideBar && "Organization"}
+                  <PiStudentBold size={20} />
+                  {!sideBar && "Student"}
                 </div>
                 {!sideBar && (
                   <IoIosArrowDown
@@ -99,14 +105,99 @@ function Student() {
                   </li>
                 ))}
               </ul>
-            </li> */}
+            </li>
+            <li data-tooltip-id="tooltip" data-tooltip-content="Courses">
+              <div
+                className="text-gray-500 cursor-pointer font-medium text-[15px] rounded-md h-[35px] px-4 flex justify-between items-center transition-all duration-300 hover:text-black hover:bg-gray-300"
+                onClick={() => setDropDown2(!dropDown2)}
+              >
+                <div className="flex items-center gap-2">
+                  <GiTeacher size={18} />
+                  {!sideBar && "Courses"}
+                </div>
+                {!sideBar && (
+                  <IoIosArrowDown
+                    className={`transform transition-transform duration-300 ${
+                      dropDown2 ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                )}
+              </div>
 
+              <ul
+                className={`overflow-hidden transition-all duration-300 ${
+                  dropDown2 ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                {[
+                  { name: "Create", icon: <FiPlusCircle size={16} /> },
+
+                  { name: "Manage", icon: <FiFolder size={16} /> },
+                ].map((item, index) => (
+                  <li key={index}>
+                    <div
+                      onClick={() => {
+                        const toLo = item.name.toLocaleLowerCase();
+                        navigate(`/tutor/${toLo}/course`);
+                      }}
+                      data-tooltip-id="tooltip"
+                      data-tooltip-content={item.name}
+                      className="text-gray-500 capitalize cursor-pointer font-medium text-[15px] px-4 h-[35px] flex items-center gap-2 transition-all duration-300 hover:text-black hover:bg-gray-300"
+                    >
+                      {item.icon} {!sideBar && item.name}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            <li data-tooltip-id="tooltip" data-tooltip-content="Chapters">
+              <div
+                className="text-gray-500 cursor-pointer font-medium text-[15px] rounded-md h-[35px] px-4 flex justify-between items-center transition-all duration-300 hover:text-black hover:bg-gray-300"
+                onClick={() => setDropDown3(!dropDown3)}
+              >
+                <div className="flex items-center gap-2">
+                  <GiTeacher size={18} />
+                  {!sideBar && "Chapters"}
+                </div>
+                {!sideBar && (
+                  <IoIosArrowDown
+                    className={`transform transition-transform duration-300 ${
+                      dropDown2 ? "rotate-180" : "rotate-0"
+                    }`}
+                  />
+                )}
+              </div>
+
+              <ul
+                className={`overflow-hidden transition-all duration-300 ${
+                  dropDown3 ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+                }`}
+              >
+                {[
+                  { name: "Create", icon: <FiPlusCircle size={16} /> },
+
+                  { name: "Manage", icon: <FiFolder size={16} /> },
+                ].map((item, index) => (
+                  <li key={index}>
+                    <div
+                      onClick={() => {
+                        const toLo = item.name.toLocaleLowerCase();
+                        navigate(`/tutor/${toLo}/chapter`);
+                      }}
+                      data-tooltip-id="tooltip"
+                      data-tooltip-content={item.name}
+                      className="text-gray-500 capitalize cursor-pointer font-medium text-[15px] px-4 h-[35px] flex items-center gap-2 transition-all duration-300 hover:text-black hover:bg-gray-300"
+                    >
+                      {item.icon} {!sideBar && item.name}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
             {/* Other Sidebar Items */}
             {[
-              { name: "Playground", icon: <BsGooglePlay size={18} />, path: "playground" },
-              { name: "Attendance", icon: <MdOutlineEventAvailable size={18} />, path: "attendance" },
               { name: "Analytics", icon: <FiBarChart2 size={18} /> },
-              { name: "Inbox", icon: <FiInbox size={18} />, path: "inbox" },
+              { name: "Inbox", icon: <FiInbox size={18} /> },
               { name: "Settings", icon: <FiSettings size={18} /> },
             ].map((item, index) => (
               <li
@@ -114,7 +205,8 @@ function Student() {
                 data-tooltip-id="tooltip"
                 data-tooltip-content={item.name}
                 onClick={() => {
-                  navigate(`/student/${item.path}`);
+                  const toLo = item.name.toLocaleLowerCase();
+                  navigate(`/tutor/${toLo}`);
                 }}
               >
                 <div className="text-gray-500 cursor-pointer font-medium text-[15px] rounded-md h-[35px] px-4 flex items-center gap-2 transition-all duration-300 hover:text-black hover:bg-gray-300">
@@ -175,4 +267,4 @@ function Student() {
   );
 }
 
-export default Student;
+export default Tutor;

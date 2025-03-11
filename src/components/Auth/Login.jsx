@@ -90,11 +90,10 @@ export default function Login() {
                 {/* Floating Label */}
                 <label
                   htmlFor="email"
-                  className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181]  transition-all duration-200 ${
-                    formData.email || focusedFields["email"]
+                  className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181]  transition-all duration-200 ${formData.email || focusedFields["email"]
                       ? "text-[10px] -translate-y-5 text-[#131313]  pl-1 pr-1"
                       : "text-[14px]"
-                  }`}
+                    }`}
                 >
                   Email
                 </label>
@@ -126,11 +125,10 @@ export default function Login() {
                 {/* Floating Label */}
                 <label
                   htmlFor="password"
-                  className={`absolute top-2 left-2 text-[15px] bg-white  text-[#878181]  transition-all duration-200 ${
-                    formData.password || focusedFields["password"]
+                  className={`absolute top-2 left-2 text-[15px] bg-white  text-[#878181]  transition-all duration-200 ${formData.password || focusedFields["password"]
                       ? "text-[10px] -translate-y-5 text-[#131313]  pl-1 pr-1"
                       : "text-[14px]"
-                  }`}
+                    }`}
                 >
                   Password
                 </label>
@@ -145,7 +143,7 @@ export default function Login() {
               <button
                 type="submit"
                 className="w-full bg-darkcolorBlue text-white py-2 rounded-md bg-blue-600 transition"
-                onClick={() => navigate("/dashboard")}
+                onClick={() => navigate("/dashboard/home")}
               >
                 Login
               </button>
