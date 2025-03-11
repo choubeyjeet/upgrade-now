@@ -68,30 +68,27 @@ const CreateChapter = () => {
   };
 
   return (
-    <div className="w-[100%] mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md  flex gap-4">
+    <div className="w-[100%] mx-auto p-6 bg-white  rounded-lg shadow-md  flex gap-4">
       <div className="w-[55%] p-6 rounded-lg border border-gray-300 bg-white">
         {tabs.map((tab, index) => (
           <div
             key={index}
-            className={`flex items-start gap-3 p-4 rounded-md transition-all cursor-pointer ${
-              selectedIndex === index ? "bg-gray-100" : "hover:bg-gray-50"
-            }`}
+            className={`flex items-start gap-3 p-4 rounded-md transition-all cursor-pointer ${selectedIndex === index ? "bg-gray-100" : "hover:bg-gray-50"
+              }`}
             onClick={() => setSelectedIndex(index)}
           >
             <div
-              className={`w-[45px] h-[40px] flex items-center justify-center rounded-full ${
-                selectedIndex === index
+              className={`w-[45px] h-[40px] flex items-center justify-center rounded-full ${selectedIndex === index
                   ? "bg-blue-500 text-white"
                   : "bg-gray-200 text-gray-600"
-              }`}
+                }`}
             >
               {tab.icon}
             </div>
             <div>
               <h3
-                className={`text-sm font-semibold ${
-                  selectedIndex === index ? "text-blue-600" : "text-gray-800"
-                }`}
+                className={`text-sm font-semibold ${selectedIndex === index ? "text-blue-600" : "text-gray-800"
+                  }`}
               >
                 {tab.label}
               </h3>

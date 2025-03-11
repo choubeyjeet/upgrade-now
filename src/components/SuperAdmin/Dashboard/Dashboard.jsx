@@ -153,7 +153,6 @@ function Dashboard() {
       {mobileMenu && (
         <div className="fixed inset-0 bg-white text-white flex flex-col p-6 z-50 transition-transform duration-300 ease-in-out transform origin-top scale-100 opacity-100">
           {/* Close Button */}
-
           <img
             src="https://ecme-react.themenate.net/img/logo/logo-light-full.png"
             alt="Logo"
@@ -174,39 +173,37 @@ function Dashboard() {
                       if (item.children) {
                         toggleMenu(item.path);
                       } else {
+                        setMobileMenu(false); // 🔹 Close menu when navigating
                         navigate(`/dashboard/${item.path}`);
                       }
                     }}
-                    data-tooltip-id="tooltip"
-                    data-tooltip-content={item.name}
                   >
                     <div className="flex items-center gap-2">
                       {item.icon}
-                      {!sideBar && <span>{item.name}</span>}
+                      <span>{item.name}</span>
                     </div>
-                    {!sideBar && item.children && (
+                    {item.children && (
                       <IoIosArrowDown
                         className={`transform transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
                       />
                     )}
                   </div>
 
+                  {/* Submenu */}
                   <ul
                     className={`transition-[max-height,opacity] duration-500 ease-in-out overflow-hidden ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
                   >
                     {item.children?.map((sub, subIndex) => (
                       <li key={subIndex}>
                         <div
-                          onClick={() => navigate(`/dashboard/${item.path}/${sub.path}`)}
-                          data-tooltip-id="tooltip"
-                          data-tooltip-content={sub.name}
-                          className={`flex ${sideBar && "justify-end"} items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path ? "text-blue-500" : "text-gray-500"} hover:text-black hover:bg-gray-200 font-medium`}
+                          onClick={() => {
+                            setMobileMenu(false); // 🔹 Close menu when navigating
+                            navigate(`/dashboard/${item.path}/${sub.path}`);
+                          }}
+                          className={`flex items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path ? "text-blue-500" : "text-gray-500"} hover:text-black hover:bg-gray-200 font-medium`}
                         >
-                          {activeSubPath === sub.path && !sideBar && (
-                            <span className="w-2 h-2 bg-blue-500 rounded-full transition-opacity duration-300"></span>
-                          )}
                           <span>{sub.icon}</span>
-                          {!sideBar && <span>{sub.name}</span>}
+                          <span>{sub.name}</span>
                         </div>
                       </li>
                     ))}
@@ -221,6 +218,7 @@ function Dashboard() {
           </div>
         </div>
       )}
+
 
       {/* Main Content */}
       <div className="w-full flex flex-col">

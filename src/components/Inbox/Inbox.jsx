@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { MdEmail, MdClose } from "react-icons/md";
 import RightSideMenu from "./RightSideMenu";
 import LeftSidePreview from "./LeftSidePreview";
-// import "@toast-ui/editor/dist/toastui-editor.css";
-// import { Editor } from "@toast-ui/react-editor";
+import "@toast-ui/editor/dist/toastui-editor.css";
+import { Editor } from "@toast-ui/react-editor";
 
 export default function Inbox() {
   const [activeTab, setActiveTab] = useState(0);

@@ -52,8 +52,8 @@ export default function Login() {
   return (
     <>
       <div className="w-full  h-[90vh] flex justify-between items-start">
-        <div className="m-6 w-[60%] flex flex-col justify-center items-center  h-full">
-          <div className="h-full  w-[60%]">
+        <div className="m-6 lg:w-[60%] w-[100%] flex flex-col justify-center items-center  h-full">
+          <div className="h-full w-[100%] lg:w-[60%]">
             <div className="flex justify-start mb-6 mt-4 ">
               <img
                 src="https://res.cloudinary.com/tactical-value/image/upload/v1740457883/logo_dayhmq.png"
@@ -91,8 +91,8 @@ export default function Login() {
                 <label
                   htmlFor="email"
                   className={`absolute top-2 left-2 text-[15px] bg-white text-[#878181]  transition-all duration-200 ${formData.email || focusedFields["email"]
-                      ? "text-[10px] -translate-y-5 text-[#131313]  pl-1 pr-1"
-                      : "text-[14px]"
+                    ? "text-[10px] -translate-y-5 text-[#131313]  pl-1 pr-1"
+                    : "text-[14px]"
                     }`}
                 >
                   Email
@@ -126,8 +126,8 @@ export default function Login() {
                 <label
                   htmlFor="password"
                   className={`absolute top-2 left-2 text-[15px] bg-white  text-[#878181]  transition-all duration-200 ${formData.password || focusedFields["password"]
-                      ? "text-[10px] -translate-y-5 text-[#131313]  pl-1 pr-1"
-                      : "text-[14px]"
+                    ? "text-[10px] -translate-y-5 text-[#131313]  pl-1 pr-1"
+                    : "text-[14px]"
                     }`}
                 >
                   Password
@@ -151,7 +151,7 @@ export default function Login() {
           </div>
         </div>
 
-        <div className=" w-[40%] m-5 h-[90vh]">
+        <div className=" w-[40%] m-5 h-[90vh] lg:block hidden">
           <img
             src="https://ecme-react.themenate.net/img/others/auth-side-bg.png"
             alt="i123"

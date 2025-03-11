@@ -59,7 +59,7 @@ export default function BasicInfo() {
         {/* Description Textarea */}
         <div className="relative">
           <textarea
-            className="w-full p-2 border rounded-md  dark:text-white focus:outline-none"
+            className="w-full p-2 border rounded-md  text-white focus:outline-none"
             {...register("description", {
               required: "Description is required",
             })}
