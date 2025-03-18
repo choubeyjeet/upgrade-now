@@ -19,9 +19,9 @@ const OrganizationTable = () => {
                     {/* Header */}
                     <div className="flex justify-between items-center mb-4">
                         <h3 className="text-black font-bold text-[24px]">Manage Organization</h3>
-                        <button className="bg-blue-500 text-white px-4 h-[40px] rounded font-bold hover:bg-blue-600 lg:text-[14px] text-[12px]">
+                        {/* <button className="bg-blue-500 text-white px-4 h-[40px] rounded font-bold hover:bg-blue-600 lg:text-[14px] text-[12px]">
                             + Add New
-                        </button>
+                        </button> */}
                     </div>
 
                     {/* Search & Filter Section */}

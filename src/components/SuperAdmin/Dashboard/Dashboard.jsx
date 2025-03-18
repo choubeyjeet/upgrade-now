@@ -77,7 +77,7 @@ function Dashboard() {
         </div>
         {!sideBar && <p className="font-semibold items-start justify-start px-5 text-gray-700 flex">DashBoard</p>}
         {/* Sidebar Items */}
-        <ul className="mt-2 cursor-pointer">
+        <ul className="mt-7 cursor-pointer">
           {menuItems.map((item, index) => {
             const isActive = activePath === item.path;
             const isOpen = openMenus[item.path];
@@ -158,7 +158,7 @@ function Dashboard() {
             alt="Logo"
             className="w-40 mb-6"
           />
-
+          Student
           <ul className="w-full">
             {menuItems.map((item, index) => {
               const isActive = activePath === item.path;

@@ -41,7 +41,6 @@ function App() {
           </Route>
           <Route path="student" element={<Student />}>
             <Route path="inbox/" element={<Inbox />} />
-
             <Route path="playground" element={<Playground />} />
             <Route path="playground/courses" element={<ManageCourse />} />
             <Route path="playground/chapters" element={<ManageChapter />} />
@@ -53,10 +52,10 @@ function App() {
           </Route>
           <Route path="tutor" element={<Tutor />}>
             <Route path="inbox/" element={<Inbox />} />
-            <Route path="create/course" element={<CreateCourse />} />
-            <Route path="manage/course" element={<ManageCourse />} />
-            <Route path="manage/chapter" element={<ManageChapter />} />
-            <Route path="create/chapter" element={<CreateChapter />} />
+            <Route path="course/create" element={<CreateCourse />} />
+            <Route path="course/manage" element={<ManageCourse />} />
+            <Route path="chapter/manage" element={<ManageChapter />} />
+            <Route path="chapter/create" element={<CreateChapter />} />
             <Route path="dashboard/" element={<TutorDashboard />} />
           </Route>
         </Routes>

@@ -68,37 +68,42 @@ const CreateChapter = () => {
   };
 
   return (
-    <div className="w-[100%] mx-auto p-6 bg-white  rounded-lg shadow-md  flex gap-4">
-      <div className="w-[55%] p-6 rounded-lg border border-gray-300 bg-white">
-        {tabs.map((tab, index) => (
-          <div
-            key={index}
-            className={`flex items-start gap-3 p-4 rounded-md transition-all cursor-pointer ${selectedIndex === index ? "bg-gray-100" : "hover:bg-gray-50"
-              }`}
-            onClick={() => setSelectedIndex(index)}
-          >
-            <div
-              className={`w-[45px] h-[40px] flex items-center justify-center rounded-full ${selectedIndex === index
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-200 text-gray-600"
-                }`}
-            >
-              {tab.icon}
-            </div>
-            <div>
-              <h3
-                className={`text-sm font-semibold ${selectedIndex === index ? "text-blue-600" : "text-gray-800"
+    <>
+      <div className="w-full bg-gray-100 ">
+        <h1 className="text-2xl font-bold mb-4 mt-6 px-6">Create Chapter</h1>
+        <div className="w-[100%] mx-auto px-6 bg-gray-100  rounded-lg shadow-md  flex gap-4">
+          <div className="w-[55%] p-6 rounded-lg border border-gray-300 bg-white">
+            {tabs.map((tab, index) => (
+              <div
+                key={index}
+                className={`flex items-start gap-3 p-4 rounded-md transition-all cursor-pointer ${selectedIndex === index ? "bg-gray-100" : "hover:bg-gray-50"
                   }`}
+                onClick={() => setSelectedIndex(index)}
               >
-                {tab.label}
-              </h3>
-              <p className="text-xs text-gray-500">{tab.description}</p>
-            </div>
+                <div
+                  className={`lg:w-[45px]  h-[40px] flex items-center justify-center rounded-full ${selectedIndex === index
+                    ? "bg-blue-500 text-white"
+                    : "bg-gray-200 text-gray-600"
+                    }`}
+                >
+                  {tab.icon}
+                </div>
+                <div className="lg:block hidden">
+                  <h3
+                    className={`text-sm font-semibold ${selectedIndex === index ? "text-blue-600" : "text-gray-800"
+                      }`}
+                  >
+                    {tab.label}
+                  </h3>
+                  <p className="text-xs text-gray-500">{tab.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+          {formView()}
+        </div>
       </div>
-      {formView()}
-    </div>
+    </>
   );
 };
 
