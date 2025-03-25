@@ -101,7 +101,7 @@ function Admin() {
                     if (item.children) {
                       toggleMenu(item.path);
                     } else {
-                      navigate(`/dashboard/${item.path}`);
+                      navigate(`/${item.path}`);
                     }
                   }}
                   data-tooltip-id="tooltip"
@@ -128,7 +128,7 @@ function Admin() {
                     <li key={subIndex}>
                       <div
                         onClick={() =>
-                          navigate(`/dashboard/${item.path}/${sub.path}`)
+                          navigate(`/admin/${item.path}/${sub.path}`)
                         }
                         data-tooltip-id="tooltip"
                         data-tooltip-content={sub.name}
@@ -183,7 +183,7 @@ function Admin() {
                         toggleMenu(item.path);
                       } else {
                         setMobileMenu(false); // 🔹 Close menu when navigating
-                        navigate(`/dashboard/${item.path}`);
+                        navigate(`/admin/${item.path}`);
                       }
                     }}
                   >
@@ -207,7 +207,7 @@ function Admin() {
                         <div
                           onClick={() => {
                             setMobileMenu(false); // 🔹 Close menu when navigating
-                            navigate(`/dashboard/${item.path}/${sub.path}`);
+                            navigate(`/admin/${item.path}/${sub.path}`);
                           }}
                           className={`flex items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path ? "text-blue-500" : "text-gray-500"} hover:text-black hover:bg-gray-200 font-medium`}
                         >
@@ -262,8 +262,8 @@ function Admin() {
             </div>
           </div>
         </div>
-
         <Outlet />
+
       </div>
 
     </div>

@@ -24,6 +24,8 @@ import ManageCourse from "./components/Course/ManageChapter";
 import CreateCourse from "./components/Course/CreateCourse";
 import Playground from "./components/Student/Playground";
 import Attendance from "./components/Student/Attendance";
+import CreateStudent from "./components/Admin/CreateStudent";
+import ManageStu from "./components/Admin/ManageStu";
 function App() {
   return (
     <>
@@ -48,6 +50,8 @@ function App() {
             <Route path="dashboard/" element={<StudentDashboard />} />
           </Route>
           <Route path="admin" element={<Admin />}>
+            <Route path="student/create" element={<CreateStudent />} />
+            <Route path="student/manage" element={<ManageStu />} />
             <Route path="dashboard/" element={<AdminDashboard />} />
           </Route>
           <Route path="tutor" element={<Tutor />}>
