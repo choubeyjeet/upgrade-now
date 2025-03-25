@@ -132,15 +132,17 @@ function Admin() {
                         }
                         data-tooltip-id="tooltip"
                         data-tooltip-content={sub.name}
-                        className={`flex ${sideBar && "justify-end"} items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path
+                        className={`flex ${sideBar && "justify-end"} items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activePath === item.path && activeSubPath === sub.path
+
                           ? "text-blue-500"
                           : "text-gray-500"
                           } hover:text-black hover:bg-gray-200 font-medium`}
                       >
 
-                        {activeSubPath === sub.path && !sideBar && (
-                          <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                        )}
+                        {activePath === item.path && activeSubPath === sub.path
+                          && !sideBar && (
+                            <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                          )}
 
 
                         <span>{sub.icon}</span>
@@ -209,7 +211,8 @@ function Admin() {
                             setMobileMenu(false); // 🔹 Close menu when navigating
                             navigate(`/admin/${item.path}/${sub.path}`);
                           }}
-                          className={`flex items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activeSubPath === sub.path ? "text-blue-500" : "text-gray-500"} hover:text-black hover:bg-gray-200 font-medium`}
+                          className={`flex items-center gap-2 text-[14px] px-8 h-[35px] transition-all duration-300 cursor-pointer ${activePath === item.path && activeSubPath === sub.path
+                            ? "text-blue-500" : "text-gray-500"} hover:text-black hover:bg-gray-200 font-medium`}
                         >
                           <span>{sub.icon}</span>
                           <span>{sub.name}</span>
