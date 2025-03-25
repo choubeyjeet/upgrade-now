@@ -7,9 +7,9 @@ const ManageStu = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
     const organizations = [
-        { id: "ORG001", name: "Tech Solutions", status: "Active", users: 25, createdAt: "2024-03-01" },
-        { id: "ORG002", name: "Innovate Inc.", status: "Pending", users: 12, createdAt: "2024-02-15" },
-        { id: "ORG003", name: "Alpha Group", status: "Inactive", users: 8, createdAt: "2023-12-10" },
+        { id: "001", name: "ABC", status: "Active", users: "ABHI", createdAt: "2024-03-01" },
+        { id: "002", name: "HE", status: "Pending", users: "OM", createdAt: "2024-02-15" },
+        { id: "003", name: "LISA", status: "Inactive", users: "NARAYAN", createdAt: "2023-12-10" },
     ];
 
     return (
