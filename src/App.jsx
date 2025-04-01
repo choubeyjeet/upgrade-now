@@ -28,6 +28,8 @@ import CreateStudent from "./components/Admin/CreateStudent";
 import ManageStu from "./components/Admin/ManageStu";
 import Faculty from "./components/Admin/Faculty";
 import ManageFaculty from "./components/Admin/ManageFaculty";
+import CoursesandChapter from "./components/Student/CoursesandChapter";
+import PlayChapters from "./components/Student/PlayChapters";
 function App() {
   return (
     <>
@@ -46,11 +48,16 @@ function App() {
           <Route path="student" element={<Student />}>
             <Route path="inbox/" element={<Inbox />} />
             <Route path="playground" element={<Playground />} />
-            <Route path="playground/courses" element={<ManageCourse />} />
-            <Route path="playground/chapters" element={<ManageChapter />} />
-            <Route path="/student/attendance" element={<Attendance />} />
+            {/* <Route path="courses" element={<ManageCourse />} /> */}
+            <Route path="playground/course_id" element={<CoursesandChapter />} />
+            {/* </Route> */}
+            <Route path="playground/course_id/chapter_id" element={<PlayChapters />} />
+
+            <Route path="attendance" element={<Attendance />} />
             <Route path="dashboard/" element={<StudentDashboard />} />
           </Route>
+
+
           <Route path="admin" element={<Admin />}>
             <Route path="student/create" element={<CreateStudent />} />
             <Route path="student/manage" element={<ManageStu />} />

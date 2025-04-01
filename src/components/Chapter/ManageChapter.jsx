@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Pagination from "../Utils/Pagination";
+import { useNavigate } from "react-router-dom";
 
 const chaptersData = [
   {
@@ -40,7 +41,7 @@ export default function ManageChapter() {
   const [chapters, setChapters] = useState(chaptersData);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-
+  const navigate = useNavigate()
   const handleSearch = (e) => {
     setSearch(e.target.value);
     setCurrentPage(1);
@@ -92,7 +93,7 @@ export default function ManageChapter() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {paginatedChapters.map((chapter) => (
-          <div key={chapter.id} className="bg-white p-4 rounded-lg shadow-lg">
+          <div key={chapter.id} className="bg-white p-4 rounded-lg shadow-lg" onClick={() => navigate(`course_id`)}>
             <img
               src={chapter.image}
               alt={chapter.title}
