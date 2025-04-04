@@ -90,7 +90,7 @@ function CoursesandChapter() {
                     <div
                         key={chapter.id}
                         className="bg-white shadow-md rounded-lg p-4 w-full md:w-[25%] cursor-pointer"
-                        onClick={() => navigate(`/chapter/${chapter.id}`)}
+                        onClick={() => navigate(`chapter_id`)}
                     >
                         <img
                             src={chapter.image}
