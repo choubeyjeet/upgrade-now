@@ -93,7 +93,7 @@ export default function ManageChapter() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {paginatedChapters.map((chapter) => (
-          <div key={chapter.id} className="bg-white p-4 rounded-lg shadow-lg" onClick={() => navigate(`course_id`)}>
+          <div key={chapter.id} className="bg-white p-4 rounded-lg shadow-lg" >
             <img
               src={chapter.image}
               alt={chapter.title}

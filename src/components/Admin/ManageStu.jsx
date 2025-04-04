@@ -2,18 +2,32 @@ import React, { useState } from "react";
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { CiEdit } from "react-icons/ci";
 import { FaRegEye } from "react-icons/fa6";
+import Pagination from "../Utils/Pagination";
 
 const ManageStu = () => {
     const [searchTerm, setSearchTerm] = useState("");
 
-    const organizations = [
-        { id: "001", name: "ABC", status: "Active", users: "ABHI", createdAt: "2024-03-01" },
-        { id: "002", name: "HE", status: "Pending", users: "OM", createdAt: "2024-02-15" },
-        { id: "003", name: "LISA", status: "Inactive", users: "NARAYAN", createdAt: "2023-12-10" },
+    const stulist = [
+        { id: "001", name: "ABC", status: "Active", users: "ABHI", class: "1" },
+        { id: "002", name: "HE", status: "Pending", users: "OM", class: "2" },
+        { id: "003", name: "LISA", status: "Inactive", users: "NARAYAN", class: "5" },
     ];
 
+    const itemsPerPage = 6;
+    const [currentPage, setCurrentPage] = useState(1);
+    // const filteredChapters = organizations.filter(
+    //     (chapter) =>
+    //         (filter === "All" || chapter.level === filter) &&
+    //         chapter.title.toLowerCase().includes(search.toLowerCase())
+    // );
+    const totalPages = Math.ceil(stulist.length / itemsPerPage);
+    const paginatedList = stulist.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
     return (
-        <div className="w-full bg-[#F5F5F5] flex justify-center items-center">
+        <div className="w-full h-full bg-[#F5F5F5] flex justify-center items-center">
             <div className="px-5 mt-6 w-full max-w-6xl">
                 <div className="p-6 border rounded-lg shadow-md bg-white">
                     {/* Header */}
@@ -50,12 +64,12 @@ const ManageStu = () => {
                                     <th className="p-3 text-left">Student Name</th>
                                     <th className="p-3 text-left">Status</th>
                                     <th className="p-3 text-left">Father's Name</th>
-                                    <th className="p-3 text-left">Created At</th>
+                                    <th className="p-3 text-left">Class</th>
                                     <th className="p-3 text-left">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {organizations.map((org) => (
+                                {paginatedList.map((org) => (
                                     <tr key={org.id} className="border-b hover:bg-gray-50">
                                         <td className="p-3">{org.id}</td>
                                         <td className="p-3">{org.name}</td>
@@ -67,7 +81,7 @@ const ManageStu = () => {
                                             </span>
                                         </td>
                                         <td className="p-3">{org.users}</td>
-                                        <td className="p-3">{org.createdAt}</td>
+                                        <td className="p-3">{org.class}</td>
                                         <td className="px-2 py-4 flex justify-start gap-2 items-center">
                                             <CiEdit className="cursor-pointer text-gray-600 font-semibold text-[17px] hover:text-blue-500" />
                                             <FaRegEye className="cursor-pointer text-gray-600 font-semibold text-[17px] hover:text-blue-500" />
@@ -80,7 +94,7 @@ const ManageStu = () => {
 
                     {/* Card Layout (Small Screens) */}
                     <div className="md:hidden flex flex-col gap-4">
-                        {organizations.map((org) => (
+                        {paginatedList.map((org) => (
                             <div key={org.id} className="p-4 border rounded-lg shadow-md bg-white">
                                 <div className="flex justify-between">
                                     <h4 className="font-bold text-lg text-gray-800">{org.name}</h4>
@@ -101,7 +115,13 @@ const ManageStu = () => {
                         ))}
                     </div>
                 </div>
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
+
         </div>
     );
 };

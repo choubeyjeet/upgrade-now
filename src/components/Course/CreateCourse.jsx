@@ -23,11 +23,6 @@ const tabs = [
     icon: <FiPackage size={22} />,
   },
 
-  {
-    label: "Add Questions",
-    description: "Specify the location details including city and postal code.",
-    icon: <CiCircleQuestion size={22} />,
-  },
 
   {
     label: "Add Additional Notes",
@@ -44,10 +39,9 @@ const CreateCourse = () => {
       case 0:
         return <ChapterBasicInfo />;
 
-      case 1:
-        return <CourseAddQuestions />;
 
-      case 2:
+
+      case 1:
         return <CourseAdditionalNotes />;
       default:
         return <CourseBasicInfo />;

@@ -1,27 +1,71 @@
-import { useState } from "react";
+import React, { useState, useRef } from "react";
+import { FiUploadCloud, FiTrash2 } from "react-icons/fi";
 
-export default function UploadFcultyPic({ onSubmit }) {
-    const [photo, setPhoto] = useState(null);
+const UploadFcultyPic = () => {
+    const [image, setImage] = useState(null);
+    const [imagePreview, setImagePreview] = useState(null);
+    const fileInputRef = useRef(null);
 
-    const handleFileChange = (e) => {
-        setPhoto(e.target.files[0]);
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setImage(file);
+            setImagePreview(URL.createObjectURL(file));
+        }
     };
 
-    const handleSubmit = (e) => {
+    const removeImage = () => {
+        setImage(null);
+        setImagePreview(null);
+    };
+
+    const handleDragOver = (e) => {
         e.preventDefault();
-        onSubmit(photo);
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            setImage(file);
+            setImagePreview(URL.createObjectURL(file));
+        }
     };
 
     return (
-        <div className="w-full mx-auto p-6 bg-white  border border-gray-300 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">Upload Photo</h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                    <label className="block font-medium">Your Photo</label>
-                    <input type="file" accept="image/*" onChange={handleFileChange} className="w-full p-2 border rounded" required />
+        <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-md mx-auto">
+            <h2 className="text-lg font-semibold text-gray-700 mb-4">Upload Photo</h2>
+
+            {imagePreview ? (
+                <div className="relative w-full flex flex-col items-center">
+                    <img src={imagePreview} alt="Logo Preview" className="w-40 h-40 object-cover rounded-md border shadow-md" />
+                    <button
+                        className="mt-3 flex items-center gap-2 bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition"
+                        onClick={removeImage}
+                    >
+                        <FiTrash2 /> Remove
+                    </button>
                 </div>
-                <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Upload</button>
-            </form>
+            ) : (
+                <div
+                    className="w-full border-2 border-dashed border-gray-300 p-6 flex flex-col items-center justify-center rounded-lg cursor-pointer hover:border-blue-400 transition"
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                    onClick={() => fileInputRef.current.click()}
+                >
+                    <FiUploadCloud size={40} className="text-gray-400" />
+                    <span className="text-gray-600 text-sm mt-2">Drag & Drop or Click to Upload</span>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        ref={fileInputRef}
+                        onChange={handleImageChange}
+                    />
+                </div>
+            )}
         </div>
     );
-}
+};
+
+export default UploadFcultyPic;

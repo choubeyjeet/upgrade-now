@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { CiEdit } from "react-icons/ci";
 import { FaRegEye } from "react-icons/fa6";
+import Pagination from "../Utils/Pagination";
 
 const ManageFaculty = () => {
     const [searchTerm, setSearchTerm] = useState("");
@@ -12,8 +13,21 @@ const ManageFaculty = () => {
         { id: "F003", name: "Emily Johnson", status: "Inactive", subject: "History", experience: "8 years", createdAt: "2023-12-10" },
     ];
 
+    const itemsPerPage = 6;
+    const [currentPage, setCurrentPage] = useState(1);
+    // const filteredChapters = organizations.filter(
+    //     (chapter) =>
+    //         (filter === "All" || chapter.level === filter) &&
+    //         chapter.title.toLowerCase().includes(search.toLowerCase())
+    // );
+    const totalPages = Math.ceil(faculties.length / itemsPerPage);
+    const paginatedList = faculties.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
+
     return (
-        <div className="w-full bg-[#F5F5F5] flex justify-center items-center">
+        <div className="w-full h-full bg-[#F5F5F5] flex justify-center items-center">
             <div className="px-5 mt-6 w-full max-w-6xl">
                 <div className="p-6 border rounded-lg shadow-md bg-white">
                     {/* Header */}
@@ -53,7 +67,7 @@ const ManageFaculty = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {faculties.map((faculty) => (
+                                {paginatedList.map((faculty) => (
                                     <tr key={faculty.id} className="border-b hover:bg-gray-50">
                                         <td className="p-3">{faculty.id}</td>
                                         <td className="p-3">{faculty.name}</td>
@@ -79,7 +93,7 @@ const ManageFaculty = () => {
 
                     {/* Card Layout (Small Screens) */}
                     <div className="md:hidden flex flex-col gap-4">
-                        {faculties.map((faculty) => (
+                        {paginatedList.map((faculty) => (
                             <div key={faculty.id} className="p-4 border rounded-lg shadow-md bg-white">
                                 <div className="flex justify-between">
                                     <h4 className="font-bold text-lg text-gray-800">{faculty.name}</h4>
@@ -101,6 +115,11 @@ const ManageFaculty = () => {
                         ))}
                     </div>
                 </div>
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
         </div>
     );

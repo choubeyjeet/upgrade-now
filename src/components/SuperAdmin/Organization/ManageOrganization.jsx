@@ -4,12 +4,32 @@ import { CiEdit } from "react-icons/ci";
 import { FaBuilding, FaRegEye } from "react-icons/fa6";
 import { CgLogOff } from "react-icons/cg";
 import { IoClose } from "react-icons/io5";
+import Pagination from "../../Utils/Pagination";
 
 const OrganizationTable = () => {
+    const organizations = [
+        { id: "ORG001", name: "Tech Solutions", status: "Active", users: 25, createdAt: "2024-03-01" },
+        { id: "ORG002", name: "Innovate Inc.", status: "Pending", users: 12, createdAt: "2024-02-15" },
+        { id: "ORG003", name: "Alpha Group", status: "Inactive", users: 8, createdAt: "2023-12-10" },
+    ];
     const [searchTerm, setSearchTerm] = useState("");
     const [openOrgModal, setOpenOrgModal] = useState(false);
     const [typedOpt, setTypedOpt] = useState("");
     const [activate, setActivate] = useState(false);
+    const [filter, setFilter] = useState("All");
+    const [search, setSearch] = useState("");
+    const itemsPerPage = 6;
+    const [currentPage, setCurrentPage] = useState(1);
+    // const filteredChapters = organizations.filter(
+    //     (chapter) =>
+    //         (filter === "All" || chapter.level === filter) &&
+    //         chapter.title.toLowerCase().includes(search.toLowerCase())
+    // );
+    const totalPages = Math.ceil(organizations.length / itemsPerPage);
+    const paginatedOrg = organizations.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
+    );
     const [active, setActive] = useState({
         is_active: true,
     });
@@ -43,14 +63,10 @@ const OrganizationTable = () => {
         setFocusedFields((prev) => ({ ...prev, [fieldName]: false }));
     };
 
-    const organizations = [
-        { id: "ORG001", name: "Tech Solutions", status: "Active", users: 25, createdAt: "2024-03-01" },
-        { id: "ORG002", name: "Innovate Inc.", status: "Pending", users: 12, createdAt: "2024-02-15" },
-        { id: "ORG003", name: "Alpha Group", status: "Inactive", users: 8, createdAt: "2023-12-10" },
-    ];
+
 
     return (
-        <div className="w-full bg-[#F5F5F5] flex justify-center items-center">
+        <div className="w-full bg-[#F5F5F5] flex justify-center items-center h-full">
             <div className="px-5 mt-6 w-full max-w-6xl">
                 <div className="p-6 border rounded-lg shadow-md bg-white">
                     {/* Header */}
@@ -92,7 +108,7 @@ const OrganizationTable = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {organizations.map((org) => (
+                                {paginatedOrg.map((org) => (
                                     <tr key={org.id} className="border-b hover:bg-gray-50">
                                         <td className="p-3">{org.id}</td>
                                         <td className="p-3">{org.name}</td>
@@ -140,6 +156,11 @@ const OrganizationTable = () => {
                         ))}
                     </div>
                 </div>
+                <Pagination
+                    totalPages={totalPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
             {openOrgModal && (
                 <>
@@ -256,6 +277,7 @@ const OrganizationTable = () => {
                     </div>
                 </>
             )}
+
         </div>
     );
 };
