@@ -44,9 +44,9 @@ function CoursesandChapter() {
 
     return (
         <>
-            <div className="w-full rounded mt-2 px-4">
+            <div className="w-full rounded mt-2 px-4 flex flex-col">
                 <div className="w-full bg-gray-200 h-auto flex flex-col lg:flex-row lg:justify-evenly md:justify-start sm:justify-start items-center rounded">
-                    <div className="w-full rounded mt-2 px-4">
+                    <div className="w-full rounded mt-2 px-4 ">
                         <div className="w-full bg-gray-200 h-auto flex flex-col lg:flex-row lg:justify-evenly md:justify-start sm:justify-start items-center rounded">
                             <div className="lg:w-[50%] w-[100%] md:w-[100%] h-[205px] relative p-2">
                                 <img

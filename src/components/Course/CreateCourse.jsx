@@ -54,7 +54,7 @@ const CreateCourse = () => {
         <h1 className="text-2xl font-bold mb-4 mt-6 px-6">Create Course</h1>
         <div className="w-[100%]  pb-[45px] mx-auto px-6 bg-gray-100  rounded-lg shadow-md  flex gap-4">
 
-          <div className="w-[55%] p-6 rounded-lg border border-gray-300 bg-white">
+          <div className="w-[40%] p-6 rounded-lg border border-gray-300 bg-white">
             {tabs.map((tab, index) => (
               <div
                 key={index}

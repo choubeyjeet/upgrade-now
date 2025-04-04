@@ -14,7 +14,7 @@ export default function CourseAdditionalNotes() {
   };
 
   return (
-    <div className="w-[65%] mx-auto p-4 bg-white shadow-md rounded-md">
+    <div className="w-[60%] mx-auto p-4 bg-white shadow-md rounded-md">
       <Editor
         initialValue=""
         previewStyle="vertical"
