@@ -64,7 +64,7 @@ export default function Login() {
             <div className="w-full px-5">
               <h1 className="text-3xl font-bold font-sans ">
                 Welcome back! <br />
-                <span className="text-sm">
+                <span className="text-sm text-blue-600">
                   Please enter your credentials to sign in!
                 </span>{" "}
               </h1>
